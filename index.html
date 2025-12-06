@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Помодоро Таймер</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Главный экран -->
+        <div id="mainScreen" class="screen active">
+            <div class="container">
+                <h1>🍅 Помодоро</h1>
+                
+                <div class="form-section">
+                    <label for="activityInput">Название занятия:</label>
+                    <input 
+                        id="activityInput"
+                        type="text"
+                        placeholder="Например: Подготовка отчёта"
+                    />
+
+                    <label for="categoryInput">Категория:</label>
+                    <input 
+                        id="categoryInput"
+                        type="text"
+                        placeholder="Например: Работа"
+                    />
+
+                    <label>Время таймера:</label>
+                    <div class="timer-buttons">
+                        <button class="btn-timer" data-minutes="15">15 мин</button>
+                        <button class="btn-timer" data-minutes="20">20 мин</button>
+                        <button class="btn-timer" data-minutes="30">30 мин</button>
+                    </div>
+
+                    <label for="customInput">Или своё время (мин):</label>
+                    <div class="custom-timer">
+                        <input 
+                            id="customInput"
+                            type="number"
+                            min="1"
+                            max="1440"
+                            placeholder="25"
+                        />
+                        <button id="customBtn" class="btn btn-primary">Запустить</button>
+                    </div>
+                </div>
+
+                <button id="analyticsBtn" class="btn btn-secondary btn-full">
+                    📊 Аналитика
+                </button>
+            </div>
+        </div>
+
+        <!-- Экран таймера -->
+        <div id="timerScreen" class="screen">
+            <div class="container timer-container">
+                <div class="timer-info">
+                    <h2 id="timerActivity">Занятие</h2>
+                    <p id="timerCategory">Категория</p>
+                </div>
+
+                <div class="timer-display">
+                    <div id="timerValue" class="timer-value">00:00</div>
+                </div>
+
+                <div class="timer-controls">
+                    <button id="pauseBtn" class="btn btn-secondary">⏸ Пауза</button>
+                    <button id="resumeBtn" class="btn btn-secondary" style="display:none;">▶️ Продолжить</button>
+                    <button id="stopBtn" class="btn btn-danger">⏹ Стоп</button>
+                </div>
+
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Экран аналитики -->
+        <div id="analyticsScreen" class="screen">
+            <div class="container">
+                <h2>📊 Аналитика</h2>
+
+                <div id="analyticsContent" class="analytics-content">
+                    <!-- Заполнится JS -->
+                </div>
+
+                <button id="backBtn" class="btn btn-primary btn-full">
+                    ← Назад
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
