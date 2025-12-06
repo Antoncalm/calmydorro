@@ -1,0 +1,322 @@
+:root {
+    --primary: #2196F3;
+    --primary-dark: #1976D2;
+    --secondary: #757575;
+    --danger: #f44336;
+    --success: #4CAF50;
+    --bg: #fff;
+    --surface: #f5f5f5;
+    --text: #212121;
+    --text-secondary: #757575;
+    --border: #e0e0e0;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #1e1e1e;
+        --surface: #2d2d2d;
+        --text: #ffffff;
+        --text-secondary: #b0b0b0;
+        --border: #404040;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+}
+
+.app {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+
+.screen.active {
+    opacity: 1;
+    pointer-events: all;
+    position: relative;
+}
+
+.container {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.form-section {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.timer-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.btn-timer {
+    padding: 12px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-timer:active,
+.btn-timer.selected {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: white;
+}
+
+.custom-timer {
+    display: flex;
+    gap: 10px;
+}
+
+.custom-timer input {
+    flex: 1;
+}
+
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: none;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:active {
+    background: var(--primary-dark);
+}
+
+.btn-secondary {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:active {
+    background: var(--border);
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: white;
+}
+
+.btn-danger:active {
+    background: #da190b;
+}
+
+.btn-full {
+    width: 100%;
+    display: block;
+}
+
+/* Таймер */
+.timer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 40px 20px;
+}
+
+.timer-info {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.timer-info h2 {
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.timer-info p {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.timer-display {
+    margin-bottom: 40px;
+}
+
+.timer-value {
+    font-size: 80px;
+    font-weight: bold;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    color: var(--primary);
+}
+
+.timer-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.timer-controls .btn {
+    flex: 1;
+    min-width: 100px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: var(--surface);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary);
+    width: 100%;
+    transition: width 0.3s linear;
+}
+
+/* Аналитика */
+.analytics-content {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.category-item {
+    padding: 15px;
+    background: var(--bg);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--primary);
+}
+
+.category-name {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.category-stat {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+.analytics-total {
+    padding: 20px;
+    background: var(--primary);
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.analytics-total div {
+    margin: 8px 0;
+}
+
+.total-label {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.total-value {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+}
+
+.empty-state-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
