@@ -1,10 +1,12 @@
 import logging
+import os
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
 
 WEBAPP_URL = "https://calmydorro.onrender.com"
 
 logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
@@ -30,8 +32,9 @@ def main():
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(button_callback))
     
-    print("🤖 Бот запущен!")
-    app.run_polling()
+    # Render Web Service: используем polling
+    print("🤖 Бот запущен в режиме polling!")
+    app.run_polling(drop_pending_updates=True)
 
 if __name__ == "__main__":
     main()
